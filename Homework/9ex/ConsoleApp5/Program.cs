@@ -16,30 +16,20 @@ namespace ConsoleApp5
 			//2 задача
 			//OrderedNotAscending();
 			//3 задача
-			//OrderByPositiveAndIndex2();
+            //OrderByPositiveAndIndex2();
 			//4 задача
 			//AreTheSetsEqual();
 			//5 задача 
 			//AddListAfterElements();
 			//6 задача
 			//ChangeWord();
-
-			//7 задача
+            //7 задача
 			//FileRead();
+            //9 задача:
+			//StudentList();
 
-
-			//9 задача:
-			StudentList();
 			Console.ReadKey();
-
-			var random = new Random();
-			//var items = Enumerable.Range(1, 10).Reverse().Select(x => x).ToList();
-			var items = Enumerable.Range(1, 10).Select(x => random.Next(-100, 100)).ToList();
-			Console.WriteLine($"target collection: {PrintCollection(items)}");
-			var result = SortEvenPositive(new LinkedList<int>(items));
-			Console.WriteLine($"sort result: {PrintCollection(result)}");
-			Console.ReadLine();
-		}
+        }
 
 		private static void StudentList()
 		{
@@ -54,9 +44,31 @@ namespace ConsoleApp5
 		private static void ChangeWord()
 		{
 			LinkedList<string> list = new LinkedList<string>(){};
-		}
+            list.AddLast("itmathrepetitorit");
+            list.AddLast("it");
+            list.AddLast("math");
+            list.AddLast("repetitorit");
 
-		private static void FileRead()
+            Console.WriteLine($"{PrintCollection(list)}");
+			string badWord = "itmathrepetitor";
+            string goodWord = "silence";
+
+            var temp = list.First;
+            while (temp != null)
+            {
+                temp.Value = TryReplace(temp.Value, badWord, goodWord);
+				temp = temp.Next;
+            }
+
+            Console.WriteLine($"{PrintCollection(list)}");
+        }
+
+        private static string TryReplace(string tempValue, string badWord, string goodWord)
+        {
+            return tempValue.Replace(badWord, goodWord);
+        }
+
+        private static void FileRead()
 		{
 			var result = new LinkedList<int>();
 			var path = $"";
